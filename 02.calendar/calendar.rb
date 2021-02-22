@@ -33,7 +33,7 @@ elsif first_day.friday?
 elsif first_day.saturday?
   spaces = ' ' * 25
   days_array.push("#{spaces}#{first_day.day}\n")
-else first_day.sunday?
+else
   spaces = ' ' * 2
   days_array.push("#{first_day.day}#{spaces}")
 end
