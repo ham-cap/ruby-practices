@@ -18,33 +18,17 @@ shots.each_slice(2){|s| frames << s}
 points = 0
 
 frames.each_with_index do |frame, index|
-  case frame
-
-
-#frames.each_with_index do |frame, index|
-#  if index == 9 && frame[0] == 10
-#    if frames[11]
-#      points += 10 + frames[10].sum + frames[11].sum
-#    else
-#      points += 10 + frames[10].sum
-#    end
-#  elsif index == 9 && frame[0] != 10 && frame.sum == 10
-#    points += 10 + frames[10].sum
-#  elsif index == 9 && frame.sum != 10
-#    points += frame.sum
-#  elsif index == frames.size - 2 && frames.size - 2 < 9
-#    points += frame.sum
-#  elsif index == frames.size - 1 || index == frames.size - 2
-#    next
-#  elsif frame[0] == 10 && frames[index + 1][0] != 10
-#    points += 10 + frames[index + 1].sum
-#  elsif frame[0] == 10 && frames[index + 1][0] == 10
-#    points += 10 + frames[index + 1][0] + frames[index + 2][0]
-#  elsif frame[0] != 10 && frame.sum == 10
-#    points += 10 + frames[index + 1][0]
-#  else
-#    points += frame.sum
-#  end
-#end
+  if index >= 9
+    points += frame.sum
+  elsif frame[0] == 10 && frames[index + 1][0] != 10
+      points += 10 + frames[index + 1].sum
+  elsif frame[0] == 10 && frames[index + 1][0] == 10
+    points += 10 + frames[index + 1][0] + frames[index + 2][0]
+  elsif frame[0] != 10 && frame.sum == 10
+    points += 10 + frames[index + 1][0]
+  else
+    points += frame.sum
+  end
+end
 puts points
 
